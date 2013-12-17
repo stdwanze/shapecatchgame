@@ -13,7 +13,7 @@ ShapeCatchGame = window.ShapeCatchGame || {};
        this.run = false;
        this.init(rightColorCallBack);
        this.frame = 1;
-       this.eventObjs = [];
+       this.eventObjects = [];
      }
      
      engine.prototype = {
@@ -105,16 +105,16 @@ ShapeCatchGame = window.ShapeCatchGame || {};
          //clear
          this.ctxt.clearRect(0, 0, this.canvas.width, this.canvas.height);
          
-         //draw
+         //draw 
          this.shapes.forEach(function (shape){
            shape.render(this.canvas,this.ctxt);
          }.bind(this));
         
-       /*  this.eventObjects.forEach(function (shape){
+        this.eventObjects.forEach(function (shape){
            shape.render(this.canvas,this.ctxt);
            
          }.bind(this));
-         this.eventObject = [];*/
+         this.eventObjects = [];
          
          // register next
          if(this.run){
