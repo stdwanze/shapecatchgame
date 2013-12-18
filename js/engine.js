@@ -56,7 +56,18 @@ ShapeCatchGame = window.ShapeCatchGame || {};
 
 					this.canvas.addEventListener("click", function(e) {
 						console.log('click: ' + e.offsetX + '/' + e.offsetY);
-						var shape = this.collides(e.offsetX, e.offsetY);
+						this.handleClickTouch(e.offsetX,e.offsetY,isShapeToRemoveCallBack);
+					}.bind(this), false);
+					
+					this.canvas.addEventListener("touchstart", function(e) {
+						console.log('click: ' + e.clientX + '/' + e.clientY);
+						this.handleClickTouch(e.screenX,e.screenY,isShapeToRemoveCallBack);
+					}.bind(this), false);
+					
+				},
+				handleClickTouch :function (x,y,isShapeToRemoveCallBack)
+				{
+						var shape = this.collides(x,y);
 						if (shape !== null && this.run == true) {
 
 							console.log('collision: ' + shape);
@@ -76,7 +87,6 @@ ShapeCatchGame = window.ShapeCatchGame || {};
 						} else {
 							console.log('no collision');
 						}
-					}.bind(this), false);
 				},
 				collides : function(x, y) {
 					var hitShape = null;

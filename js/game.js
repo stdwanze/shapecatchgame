@@ -7,22 +7,24 @@ ShapeCatchGame = window.ShapeCatchGame || {}; ( function(ShapeCatchGame) {"use s
 			};
 			function shapeCatch(vm) {
 				this.vm = vm;
-				this.soundmanager = new ShapeCatchGame.SoundManager();
 				//canvas, infoarea, restarter,
 				this.vm.setRestartCallback(this.restart.bind(this));
 				this.canvas = this.vm.canvas;
 				this.engine = new ShapeCatchGame.Engine(this.canvas, this.canvas.getContext("2d"), this.isRightColor.bind(this));
 				this.setState(State.END);
-				/*
-				 $("#controller")[0].addEventListener("click", function (){
-				 this.engine.run ? this.engine.stop() : this.engine.start();
-				 }.bind(this));
-				 */
+				
+				this.soundmanager = new ShapeCatchGame.SoundManager();
+				
 			}
 
 
 			shapeCatch.prototype = {
-				run : function() {
+				run: function (){
+					this.soundmanager.load().done(function(){
+						this._run();
+					}.bind(this));
+				},
+				_run : function() {
 					this.setState(State.RUN);
 					this.engine.clear();
 					this.howMany = 10;
@@ -44,7 +46,7 @@ ShapeCatchGame = window.ShapeCatchGame || {}; ( function(ShapeCatchGame) {"use s
 					this.setState(State.END);
 					this.vm.update(this);
 					this.engine.stop();
-					window.setTimeout(this.run.bind(this), 1000);
+					window.setTimeout(this._run.bind(this), 1000);
 				},
 				generate : function(amount, difficulty) {
 					this.colorToHave = ShapeCatchGame.Helper.getRandColor();
