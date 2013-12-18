@@ -57,8 +57,8 @@ ShapeCatchGame = window.ShapeCatchGame || {};
       this.target.futureColor = ShapeCatchGame.Helper.colors[pos];
       this.target.oldColor = this.target.color;
       this.iterations = 6;
-      this.framesPerIteration = 30;
-      this.framesPerIterationCurrent = 30;
+      this.framesPerIteration = 25;
+      this.framesPerIterationCurrent = 25;
        
     }
     colortransform.prototype = {

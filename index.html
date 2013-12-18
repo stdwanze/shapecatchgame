@@ -1,37 +1,44 @@
 <!DOCTYPE HTML>
 <html>
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <link href="styles/styles.css" media="screen" rel="stylesheet" type="text/css" />
-    <script type='text/javascript' src="lib/jquery.1.10.2.min.js"></script>
-    <script type='text/javascript' src="lib/knockout.js"></script>
-    <script src="js/shape2.js" type="text/javascript"></script>
-    <script src="js/engine.js" type="text/javascript"></script>
-    <script src="js/game.js" type="text/javascript"></script>
-    <script src="js/viewmodel.js" type="text/javascript"></script>
-    
-    <title>ShapeCatch</title>
-    
-  </head>
-  <body>
-    <canvas id="shapecatchcanvas" width="400" height="400"></canvas>
-    <textarea id="infoarea"></textarea>
-    <div class="gameinfo" >
-      <span data-bind="text: tocatchcount"></span> <span>/</span>
-      <span data-bind="text: shapecount"></span>
-    </div>
-    <button id="restart">Restart</button> 
-    <!--  <button id="controller">Start/Stop</button> -->
-    <script>
-      
-      window.addEventListener("load", function() {
-        var game = new ShapeCatchGame.ShapeCatch($("#shapecatchcanvas")[0],$("#infoarea")[0],$("#restart"));
-        var vm = new ShapeCatchGame.ViewModel(game);
-        ko.applyBindings(vm);
-        game.run();
-      	/*git +1*/
-              /*+2*/
-      });
-    </script>
-  </body>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<link href="styles/styles.css" media="screen" rel="stylesheet" type="text/css" />
+		<script type='text/javascript' src="lib/jquery.1.10.2.min.js"></script>
+		<script type='text/javascript' src="lib/knockout.js"></script>
+		<script src="js/shape2.js" type="text/javascript"></script>
+		<script src="js/engine.js" type="text/javascript"></script>
+		<script src="js/game.js" type="text/javascript"></script>
+		<script src="js/viewmodel.js" type="text/javascript"></script>
+
+		<title>ShapeCatch</title>
+
+	</head>
+	<body>
+		<div id="gamepane">
+			<canvas id="shapecatchcanvas" width="400" height="400"></canvas>
+		</div>
+		<div id="gameinfo" >
+			<span data-bind="text: tocatchcount"></span><span>/</span>
+			<span data-bind="text: shapecount"></span>
+
+		</div>
+		<div id="message">
+			<span data-bind="text: message, click:"></span>
+		</div>
+
+		<button id="restart">
+			Restart
+		</button>
+
+		<script>
+			window.addEventListener("load", function() {
+				var vm = new ShapeCatchGame.ViewModel($("#restart"), $("#shapecatchcanvas")[0]);
+				var game = new ShapeCatchGame.ShapeCatch(vm);
+				ko.applyBindings(vm);
+				game.run();
+				/*git +1*/
+				/*+2*/
+			});
+		</script>
+	</body>
 </html>

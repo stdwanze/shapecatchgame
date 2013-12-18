@@ -1,1 +1,36 @@
+#gamepane
+{
+	position: absolute;
+	width: 600;
+	height: 500;
+}
+
+#gameinfo
+{
+	position: absolute;
+	top: 10px;
+	left: 350px;
+	font-family: "Arial Rounded MT Bold";
+	font-size: 20px;
+	color: #0080FF;
+}
+#message
+{
+	position: absolute;
+	top: 150px;
+	left: 150px;
+	font-family: "Arial Rounded MT Bold";
+	font-size: 20px;
+	color: #0080FF;
+}
+
+#restart
+{
+	position: absolute;
+	top: 405px;
+	left: 180px;
+	font-family: "Arial Rounded MT Bold";
+	font-size: 20px;
+	color: #0080FF;
+}
 
