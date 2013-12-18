@@ -7,6 +7,7 @@ ShapeCatchGame = window.ShapeCatchGame || {}; ( function(ShapeCatchGame) {"use s
 			};
 			function shapeCatch(vm) {
 				this.vm = vm;
+				this.soundmanager = new ShapeCatchGame.SoundManager();
 				//canvas, infoarea, restarter,
 				this.vm.setRestartCallback(this.restart.bind(this));
 				this.canvas = this.vm.canvas;
@@ -90,17 +91,20 @@ ShapeCatchGame = window.ShapeCatchGame || {}; ( function(ShapeCatchGame) {"use s
 
 					this.vm.update(this);
 				},
+				
 				isRightColor : function(hitShape) {
 					console.log("color to have " + this.colorToHave + "-> clicked: " + hitShape.color);
 					if (hitShape.color == this.colorToHave || hitShape.oldColor == this.colorToHave) {
 						this.howMany = this.howMany - 1;
 					//	this.infoarea.innerText = "" + this.howMany;
 						this.checkEndConditions();
+						this.soundmanager.play(ShapeCatchGame.SOUND.success);
 						return true;
 					} else {
 						this.howMany = this.howMany + 1;
 					//	this.infoarea.innerText = "" + this.howMany;
 						this.checkEndConditions();
+						this.soundmanager.play(ShapeCatchGame.SOUND.fail);
 						return false;
 					}
 

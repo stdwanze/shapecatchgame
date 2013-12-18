@@ -1,4 +1,5 @@
-ShapeCatchGame = window.ShapeCatchGame || {}; ( function(ShapeCatchGame) {"use strict";
+ShapeCatchGame = window.ShapeCatchGame || {}; 
+( function(ShapeCatchGame) {"use strict";
 
 		ShapeCatchGame.Engine = (function() {
 
