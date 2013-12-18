@@ -15,8 +15,6 @@ ShapeCatchGame = window.ShapeCatchGame || {};
 		
 		function soundmanager () {
 			
-			this.failSound = $("#fail")[0];
-			this.successSound = $("#success")[0];
 				
 		}
 		soundmanager.prototype = {
