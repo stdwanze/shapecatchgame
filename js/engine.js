@@ -11,6 +11,8 @@ ShapeCatchGame = window.ShapeCatchGame || {};
 				this.init(isShapeToRemoveCallBack);
 				this.frame = 1;
 				this.eventObjects = [];
+				
+				this.shapeFactory = new ShapeCatchGame.ShapeFactory();
 			}
 
 
@@ -65,8 +67,14 @@ ShapeCatchGame = window.ShapeCatchGame || {};
 					}.bind(this), false);
 					
 				},
+				reportClickTouch: function (x,y)
+				{
+					var touchpoint = this.shapeFactory.createStillShape(y-5,x-5,10,10,"#AAAAAA");
+					this.shapes.push(touchpoint);	
+				},
 				handleClickTouch :function (x,y,isShapeToRemoveCallBack)
 				{
+						this.reportClickTouch(x,y);
 						var shape = this.collides(x,y);
 						if (shape !== null && this.run == true) {
 

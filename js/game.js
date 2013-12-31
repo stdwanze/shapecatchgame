@@ -14,7 +14,8 @@ ShapeCatchGame = window.ShapeCatchGame || {}; ( function(ShapeCatchGame) {"use s
 				this.setState(State.END);
 				
 				this.soundmanager = new ShapeCatchGame.SoundManager();
-				
+			
+				this.shapeFactory = new ShapeCatchGame.ShapeFactory();	
 			}
 
 
@@ -49,6 +50,9 @@ ShapeCatchGame = window.ShapeCatchGame || {}; ( function(ShapeCatchGame) {"use s
 					window.setTimeout(this._run.bind(this), 1000);
 				},
 				generate : function(amount, difficulty) {
+					
+					
+					
 					this.colorToHave = ShapeCatchGame.Helper.getRandColor();
 					difficulty = difficulty < 1 ? 1 : difficulty;
 
@@ -61,16 +65,13 @@ ShapeCatchGame = window.ShapeCatchGame || {}; ( function(ShapeCatchGame) {"use s
 						var y = ShapeCatchGame.Helper.getRandomNumber(this.canvas.height - shapeHeight);
 						var speed = ShapeCatchGame.Helper.getRandomNumber(3);
 						speed = speed > 0 ? speed : 1;
-						shapes.push(new ShapeCatchGame.Shape(x, y, x + shapeWidth, y + shapeHeight, speed));
+						var shape = this.shapeFactory.createMovingColorChangeShape(x,y,shapeWidth,shapeHeight,speed);
+						shapes.push(shape);
 					}
 					this.engine.addShapes(shapes);
-					var infoshape = new ShapeCatchGame.Shape(this.canvas.width - 30, this.canvas.height - 30, this.canvas.width, this.canvas.height, 0);
-					infoshape.isHit = function() {
-						return false;
-					};
-					infoshape.color = this.colorToHave;
-					infoshape.defineColor = function() {
-					};
+					
+					var infoshape = this.shapeFactory.createStillShape(this.canvas.width - 30, this.canvas.height - 30, this.canvas.width, this.canvas.height,this.colorToHave);
+					
 					this.engine.addShapes(infoshape);
 				},
 				checkEndConditions : function() {
