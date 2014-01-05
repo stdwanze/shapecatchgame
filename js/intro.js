@@ -51,7 +51,7 @@ ShapeCatchGame = window.ShapeCatchGame || {}; ( function(ShapeCatchGame) {"use s
 					this.ctxt.fillStyle="#FF8000";
 					this.ctxt.font="30px Arial";
 					this.ctxt.fillText("ShapeCatch",100,100);
-					this.ctxt.fillText("The Game",115,150);
+					this.ctxt.fillText("almost a game",90,150);
 					this.ctxt.fillText(">play<",140,200);
 					
 					

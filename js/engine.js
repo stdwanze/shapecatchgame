@@ -57,15 +57,23 @@ ShapeCatchGame = window.ShapeCatchGame || {};
 					})();
 
 					this.canvas.addEventListener("click", function(e) {
-						console.log('click: ' + e.offsetX + '/' + e.offsetY);
-						this.handleClickTouch(e.offsetX,e.offsetY,isShapeToRemoveCallBack);
+						
+						var hitXY = this.getXY(e);
+						console.log('click: x:' + hitXY.x + '/y:' + hitXY.y);
+						
+						this.handleClickTouch(hitXY.x,hitXY.y,isShapeToRemoveCallBack);
 					}.bind(this), false);
 					
 					this.canvas.addEventListener("touchstart", function(e) {
-						console.log('click: ' + e.clientX + '/' + e.clientY);
-						this.handleClickTouch(e.screenX,e.screenY,isShapeToRemoveCallBack);
+						var hitXY = this.getXY(e);
+						console.log('click: x:' + hitXY.x + '/y:' + hitXY.y);
+						this.handleClickTouch(hitXY.x,hitXY.y,isShapeToRemoveCallBack);
 					}.bind(this), false);
 					
+				},
+				getXY : function (event)
+				{
+					return new ShapeCatchGame.Point(event.layerX, event.layerY);
 				},
 				reportClickTouch: function (x,y)
 				{
