@@ -5,6 +5,7 @@
 		<link href="styles/styles.css" media="screen" rel="stylesheet" type="text/css" />
 		<script type='text/javascript' src="lib/jquery.1.10.2.min.js"></script>
 		<script type='text/javascript' src="lib/knockout.js"></script>
+		<script src="js/intro.js" type="text/javascript"></script>
 		<script src="js/shape2.js" type="text/javascript"></script>
 		<script src="js/engine.js" type="text/javascript"></script>
 		<script src="js/soundmanager.js" type="text/javascript"></script>
@@ -32,13 +33,20 @@
 		<button id="restart">
 			Restart
 		</button>
-
+ 
 		<script>
-			window.addEventListener("load", function() {
-				var vm = new ShapeCatchGame.ViewModel($("#restart"), $("#shapecatchcanvas")[0]);
+			var vm = null;
+			var startGame = function  () {
+				vm.initGameScreen();
 				var game = new ShapeCatchGame.ShapeCatch(vm);
 				ko.applyBindings(vm);
 				game.run();
+			};
+		
+			window.addEventListener("load", function() {
+				vm = new ShapeCatchGame.ViewModel($("#restart"),$("#gameinfo"), $("#shapecatchcanvas")[0]);
+				var intro = new ShapeCatchGame.Intro($("#shapecatchcanvas")[0],startGame);
+				intro.render();
 				/*git +1*/
 				/*+2*/
 			});

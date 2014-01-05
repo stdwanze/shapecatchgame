@@ -2,16 +2,17 @@ ShapeCatchGame = window.ShapeCatchGame || {}; ( function(ShapeCatchGame) {"use s
 
 		ShapeCatchGame.ViewModel = ( function() {
 
-				function vm(restarter, canvas) {
+				function vm(restarter,gameinfo, canvas) {
 					this.shapecount = ko.observable();
 					this.tocatchcount = ko.observable();
 					this.message = ko.observable();
 					this.canvas = canvas;
 					this.restarter = restarter;
-
+					this.gameinfo = gameinfo;
 
 					this.restartCallback = null;
 					this.restarter.hide();
+					this.gameinfo.hide();
 					this.restarter[0].addEventListener("click", function() {
 						
 						if(this.restartCallback !== null) this.restartCallback();
@@ -21,6 +22,10 @@ ShapeCatchGame = window.ShapeCatchGame || {}; ( function(ShapeCatchGame) {"use s
 
 
 				vm.prototype = {
+					initGameScreen: function ()
+					{
+						this.gameinfo.show();
+					},
 					update : function(shapecatchgame) {
 						this.isEnd = shapecatchgame.state === "end" ? true: false;
 						this.shapecount(shapecatchgame.engine.getShapeCount());

@@ -32,7 +32,7 @@ ShapeCatchGame = window.ShapeCatchGame || {}; ( function(ShapeCatchGame) {"use s
 						}
 						this.checkAudio = window.setInterval( function() {
 							this.checkReadyState(deferred);
-						}.bind(this), 1000);
+						}.bind(this), 500);
 
 						return deferred.promise();
 					},

@@ -13,7 +13,7 @@ ShapeCatchGame = window.ShapeCatchGame || {};
 
 		ShapeCatchGame.Helper = {
 
-			colors : ["#FF0000", "#00FF00", "#0000FF", "#000000", "#E0E0E0", "#AABBCC"],
+			colors : ["#FF0000", "#00FF00", "#0000FF", "#000000", "#E0E0E0", "#A901DB"],
 
 			width : function(point1, point2) {
 				return point2.x - point1.x;

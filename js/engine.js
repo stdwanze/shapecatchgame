@@ -99,7 +99,9 @@ ShapeCatchGame = window.ShapeCatchGame || {};
 				collides : function(x, y) {
 					var hitShape = null;
 
-					for (var i = 0; i < this.shapes.length; i++) {
+					//for (var i = 0; i < this.shapes.length; i++) {
+					for (var i = this.shapes.length-1; i > -1; i--) {
+				
 						if (this.shapes[i].isHit(x, y)) {
 
 							hitShape = this.shapes[i];
